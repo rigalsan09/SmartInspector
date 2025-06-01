@@ -37,10 +37,7 @@ struct InspectorSidebarView: View {
                 if selectedTab == 0 {
                     VStack(alignment: .leading, spacing: 12){
                         ExpandableSectionView(title: "Position"){
-                            VStack(alignment: .leading){
-                                Text("X: 1440 pt")
-                                Text("Y: 1024 pt")
-                            }
+                            PositionSection()
                         }
                         ExpandableSectionView(title: "Style"){
                             VStack(alignment: .leading){
@@ -62,7 +59,7 @@ struct InspectorSidebarView: View {
             }
             .padding(.bottom)
         }
-        .frame(minWidth: 300)
+        .frame(width: 240)
         .background(Color(NSColor.windowBackgroundColor))
         .border(Color.gray.opacity(0.2), width: 1)
     }
