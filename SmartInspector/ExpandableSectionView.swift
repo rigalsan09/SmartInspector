@@ -22,20 +22,20 @@ struct ExpandableSectionView<Content: View>: View {
         
         DisclosureGroup(isExpanded: $isExpanded) {
             content
-                .padding(.top, 4)
-        } label: {
-            Text(title)
-                .font(.headline)
-                .padding(.vertical, 4)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .border(Color.orange, width: 4)
         }
+        label: {
+            Text(title)
+                
+                .font(.headline)
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .border(Color.blue, width:4)
+
         .padding()
-        .background(Color(NSColor.controlBackgroundColor))
-        .cornerRadius(8)
-        .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-        )
-        .padding(.horizontal)
+//        .background(Color(NSColor.controlBackgroundColor))
     }
 }
 
@@ -43,7 +43,7 @@ struct ExpandableSectionView<Content: View>: View {
     ExpandableSectionView(title: "Sample Section"){
         VStack(alignment: .leading) {
             Text("Example Line 1")
-            Text("Example Line 2")
+            
         }
     }
 }

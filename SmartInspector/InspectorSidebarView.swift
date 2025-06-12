@@ -14,54 +14,47 @@ struct InspectorSidebarView: View {
     @State private var selectedTab = 0
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0){
-            Text("Properties")
-                .font(.title2)
-                .padding()
-            
-            Divider()
-            
-            //Segmented control
-            
+        
+        VStack(alignment: .leading, spacing: 0) {
             Picker("", selection: $selectedTab){
                 Text("Properties").tag(0)
                 Text("Data").tag(1)
             }
             .pickerStyle(SegmentedPickerStyle())
-            .padding([.horizontal, .bottom])
-            
+            .padding(.horizontal, 12)
+            .padding(.vertical, 12)
             
             //Switches what appears depending on the selected tab
             
             Group{
-                if selectedTab == 0 {
-                    VStack(alignment: .leading, spacing: 12){
-                        ExpandableSectionView(title: "Position"){
-                            PositionSection()
-                        }
-                        ExpandableSectionView(title: "Style"){
-                            VStack(alignment: .leading){
-                                Text("Fill White")
-                                Text("Border None")
-                            }
-                        }
-                    }
-                } else {
-                    VStack(alignment: .leading, spacing: 12){
-                        ExpandableSectionView(title: "Field"){
-                            Text("City")
-                        }
-                        ExpandableSectionView(title: "Behavior"){
-                            Text("Hide Object when: False")
-                        }
-                    }
-                }
-            }
-            .padding(.bottom)
+                 if selectedTab == 0 {
+                     
+                     VStack(alignment: .leading, spacing: 12) {
+                         CustomDisclosureView(title: "Position"){
+                             PositionSection()
+                         }
+//                         Spacer()
+                     }
+                     
+                 } else {
+                     VStack(alignment: .leading, spacing: 12) {
+                         CustomDisclosureView(title: "Field"){
+                             Text("City")
+                         }
+//                         Spacer()
+                     }
+                 }
+             }
         }
-        .frame(width: 240)
-        .background(Color(NSColor.windowBackgroundColor))
-        .border(Color.gray.opacity(0.2), width: 1)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .background(Color(NSColor.controlBackgroundColor))
+//        .border(Color(NSColor.separatorColor), width: 1)
+        .overlay(
+            Rectangle()
+                .frame(width: 1)
+                .foregroundColor(Color(NSColor.separatorColor)), alignment: .leading
+        )
+        
     }
 }
 

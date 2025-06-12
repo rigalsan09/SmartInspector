@@ -8,59 +8,41 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var canvasHeight: CGFloat = 0
+    
     var body: some View {
-        VStack{
-            HStack (alignment: .top, spacing: 0){
-                VStack{
+        
+        
+        HStack(spacing: 0){
+            
+            //Navigator
+            HStack{
+                Text("Navigator")
+            }
+            .frame(width: 256, height: canvasHeight)
+            .background(Color(NSColor.windowBackgroundColor))
+            
+            GeometryReader{geometry in
+                
+                //Canvas
+                HStack {
                     Text("Main Canvas")
                         .font(.largeTitle)
-                    Spacer()
-                }
-                .frame(minWidth: 500)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .background(Color(NSColor.windowBackgroundColor))
+                    .onAppear{
+                        canvasHeight = geometry.size.height
+                    }
+            }
+            
+            //Inspector
+            InspectorSidebarView()
+                .frame(width: 256, height: canvasHeight)
                 
-                InspectorSidebarView()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .toolbar{
-                ToolbarItem(placement: .primaryAction){
-                    Button(action: {}) {
-                        Label("View", systemImage:"square.dashed")
-                    }
-                }
-                ToolbarItemGroup{
-                    Button(action: {}){
-                        Label("View", systemImage: "rectangle.grid.1x2")
-                    }
-                    Button(action: {}){
-                        Label("Zoom", systemImage: "magnifyingglass")
-                    }
-                    Button(action: {}){
-                        Label("Add Category", systemImage: "plus.circle")
-                    }
-                    Button(action: {}){
-                        Label("Pivot Table", systemImage: "square.grid.3x3")
-                    }
-                    Button(action: {}){
-                        Label("Insert", systemImage: "plus.square.on.square")
-                    }
-                    Button(action: {}){
-                        Label("Table", systemImage: "tablecells")
-                    }
-                    Button(action: {}){
-                        Label("Chart", systemImage: "chart.bar")
-                    }
-                    Button(action: {}){
-                        Label("Text", systemImage: "textformat")
-                    }
-                    Button(action: {}){
-                        Label("Shape", systemImage: "square")
-                    }
-                    Button(action: {}){
-                        Label("Media", systemImage: "photo")
-                    }
-                }
-            }
         }
+        .frame(width:1440, height: 1024)
     }
 }
 
