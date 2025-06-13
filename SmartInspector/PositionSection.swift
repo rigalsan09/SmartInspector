@@ -45,7 +45,7 @@ struct PositionSection: View {
             
             Divider()
             
-//---Position
+            //---Position
             VStack(spacing: 4.0){
                 
                 Text("Position")
@@ -73,7 +73,7 @@ struct PositionSection: View {
             }
             
            Divider()
-            
+            //---Size
             VStack (spacing: 4.0){
                 
                 Text("Size")
@@ -106,7 +106,9 @@ private struct PositionInputRow: View {
     @Binding var unit: String
     
     var body: some View {
+        
         HStack(alignment: .top, spacing: 4) {
+            
             VStack (spacing: 4.0) {
                 
                 TextField("0", value: $value, formatter: NumberFormatter())

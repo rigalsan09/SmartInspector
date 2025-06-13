@@ -29,14 +29,22 @@ struct InspectorSidebarView: View {
             Group{
                  if selectedTab == 0 {
                      
+                     //Appearance tab
                      VStack(alignment: .leading, spacing: 12) {
+                         
                          CustomDisclosureView(title: "Position"){
                              PositionSection()
                          }
-//                         Spacer()
+                         
+                         CustomDisclosureView(title: "Arrange & Align"){
+                             ArrangeAlignSection()
+                         }
+                         Spacer()
                      }
                      
                  } else {
+                     
+                     //Data tab
                      VStack(alignment: .leading, spacing: 12) {
                          CustomDisclosureView(title: "Field"){
                              Text("City")

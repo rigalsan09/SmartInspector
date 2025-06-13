@@ -14,7 +14,10 @@ struct CustomDisclosureView<Content: View>: View {
     
     @State private var isExpanded: Bool
     
-    init(title: String, initiallyExpanded: Bool = true, @ViewBuilder content: @escaping () -> Content){
+    init(title: String,
+         initiallyExpanded: Bool = true,
+         @ViewBuilder content: @escaping () -> Content){
+        
         self.title = title
         self.initiallyExpanded = initiallyExpanded
         self._isExpanded = State(initialValue: initiallyExpanded)
